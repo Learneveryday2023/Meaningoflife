@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Amber -->
-    <!-- Application Structure Plan: The application maintains its linear, guided journey format, displaying one page at a time. The core change is in the content's framing. It is no longer a summary of specific books but a synthesized, personal reflection by "Dream," inspired by various sources. This transformative approach minimizes copyright risk. Navigation remains sequential via 'Previous' and 'Next' buttons. This structure was chosen to provide a focused, step-by-step reading experience that feels personal and original. -->
-    <!-- Visualization & Content Choices: The primary interactive elements are the 'Previous' and 'Next' navigation buttons. The content has been entirely rewritten to be a transformative work, paraphrasing concepts and removing direct references and quotes. The 'Inform' and 'Reflect' goals are met through the new, original chapter content and rephrased journaling prompts. All interactions are handled with vanilla JavaScript. -->
+    <!-- Application Structure Plan: The application maintains its linear, guided journey format. A new "My Reflections" summary page has been added after the main summary page and before the CTA. This page dynamically collects and displays all user inputs from the journaling textareas. Navigation remains sequential via 'Previous' and 'Next' buttons. This structure provides a powerful, personalized conclusion to the journey, allowing users to synthesize their own thoughts before the final call to action. -->
+    <!-- Visualization & Content Choices: The primary interactive elements are the 'Previous' and 'Next' navigation buttons. The content is a transformative work. A new reflection summary page was added to meet the 'Synthesize' goal, dynamically generating content based on user input. A button on the main summary page now triggers the generation and navigation to this new page. All interactions are handled with vanilla JavaScript. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -53,6 +53,57 @@
         <div id="content-sections">
             <!-- Chapter pages will be generated here by JS -->
         </div>
+
+        <section id="summary-page" class="page-section py-20 md:py-24 bg-white min-h-screen flex-col justify-center items-center">
+             <div class="max-w-3xl w-full px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-8">บทสรุปการเดินทางของเรา</h2>
+                <p class="text-center text-lg text-gray-600 mb-10">เราเดินทางกันมาไกลเลยนะ! นี่คือแก่นสำคัญของบทเรียนทั้งหมดที่เราได้เรียนรู้มาด้วยกัน เพื่อเป็นเครื่องเตือนใจให้เราในทุกๆ ก้าวต่อไป</p>
+                <div class="space-y-8 text-left">
+                    <div>
+                        <h3 class="text-2xl font-bold text-amber-700 mb-3">🌱 Step 1: เริ่มต้นที่โลกข้างใน</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
+                            <li><strong>ยืนหยัดและรับผิดชอบชีวิตตัวเอง 100%</strong> เพราะพลังในการเปลี่ยนแปลงอยู่ในมือเราเสมอ</li>
+                            <li><strong>ปล่อยวางสิ่งที่ควบคุมไม่ได้</strong> และเลือกใช้พลังงานกับสิ่งที่สำคัญกับใจเราจริงๆ</li>
+                            <li><strong>โอบกอดความเป็นคนธรรมดา</strong> คุณค่าของเราไม่ได้อยู่ที่การพิเศษกว่าใคร แต่อยู่ที่การยอมรับและเป็นตัวเอง</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-amber-700 mb-3">🧭 Step 2: ค้นหาเข็มทิศของใจ</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
+                            <li><strong>ค้นหา "เหตุผล" ที่จะสู้ต่อ</strong> เพื่อให้เราผ่านวันที่ยากลำบากไปได้อย่างมีความหมาย</li>
+                            <li><strong>กล้าที่จะฝันให้ใหญ่</strong> เพราะขนาดของชีวิตจะเติบโตได้เท่ากับขนาดของความฝัน</li>
+                            <li><strong>มีความสุขระหว่างทาง</strong> ความสุขไม่ใช่จุดหมาย แต่คือการเติบโตในทุกๆ ก้าว</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-amber-700 mb-3">🚀 Step 3: ออกเดินทางสู่การเติบโต</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
+                            <li><strong>ก้าวออกจากพื้นที่ปลอดภัย</strong> เพราะการเติบโตที่แท้จริงรอเราอยู่นอก Comfort Zone</li>
+                            <li><strong>ปลุกพลังความทรหดในตัวเรา</strong> ความสำเร็จที่ยั่งยืนมาจากหัวใจที่ไม่ยอมแพ้</li>
+                            <li><strong>เปลี่ยนทุกความผิดพลาดให้เป็นบทเรียน</strong> ทุกบาดแผลจะหล่อหลอมให้เราแข็งแกร่งขึ้น</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-amber-700 mb-3">💖 Step 4: ใช้ชีวิตให้ทุกวันมีความหมาย</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
+                            <li><strong>สร้างวินัยเพื่อสร้างอิสรภาพ</strong> วินัยคือเครื่องมือที่ทำให้เราสร้างชีวิตในฝันได้จริง</li>
+                            <li><strong>เลือกอยู่กับคนที่ทำให้เราอยากเป็นคนที่ดีขึ้น</strong> สภาพแวดล้อมและคนรอบข้างสำคัญมากๆ</li>
+                            <li><strong>ระลึกถึงความตาย (Memento Mori)</strong> เพื่อใช้ชีวิตในทุกๆ วันอย่างกล้าหาญและเต็มที่ที่สุด</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reflection-summary-page" class="page-section py-20 md:py-24 bg-white min-h-screen flex-col justify-center items-center">
+             <div class="max-w-3xl w-full px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-stone-800 mb-8">✍️ บันทึกการเดินทางของฉัน</h2>
+                <p class="text-center text-lg text-gray-600 mb-10">นี่คือภาพสะท้อนความคิดและความรู้สึกของเธอตลอดการเดินทางครั้งนี้ ลองอ่านทบทวนดูนะ... เธออาจจะค้นพบอะไรบางอย่างเกี่ยวกับตัวเองที่น่าประหลาดใจก็ได้</p>
+                <div id="reflection-summary-content" class="space-y-8 text-left bg-amber-50/50 p-6 rounded-lg">
+                    <!-- Reflection content will be generated here -->
+                </div>
+            </div>
+        </section>
         
         <section id="cta-workshop" class="page-section py-20 md:py-24 bg-amber-100/60 min-h-screen flex-col justify-center items-center">
             <div class="container mx-auto px-6 text-center max-w-3xl">
@@ -305,6 +356,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const contentContainer = document.getElementById('content-sections');
+            const userReflections = {};
             let allChapters = [];
             ebookData.parts.forEach(part => {
                 allChapters.push(...part.chapters);
@@ -312,17 +364,18 @@
 
             allChapters.forEach((chapter, index) => {
                 const chapterId = `chapter-${index + 1}`;
+                userReflections[chapterId] = {};
                 
                 let questionsHtml = `
                     <div class="mt-12 pt-8 border-t-2 border-amber-200">
                         <h4 class="font-bold text-xl mb-4 text-stone-700">✍️ พื้นที่สำหรับใจเรา (บันทึกส่วนตัว)</h4>
                         <p class="text-sm text-gray-500 mb-6">ความคิดของเธอจะถูกบันทึกไว้ในหน้านี้เท่านั้นนะ จะไม่ถูกส่งไปไหนเลย</p>
                 `;
-                chapter.questions.forEach(q => {
+                chapter.questions.forEach((q, qIndex) => {
                     questionsHtml += `
                         <div class="mb-6">
                             <label class="block text-stone-700 mb-2 font-medium">${q}</label>
-                            <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition shadow-sm"></textarea>
+                            <textarea rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition shadow-sm" data-chapter-id="${chapterId}" data-question-index="${qIndex}"></textarea>
                         </div>
                     `;
                 });
@@ -346,6 +399,8 @@
             const pages = [
                 document.getElementById('hero'),
                 ...document.querySelectorAll('#content-sections .page-section'),
+                document.getElementById('summary-page'),
+                document.getElementById('reflection-summary-page'),
                 document.getElementById('cta-workshop')
             ];
 
@@ -353,6 +408,10 @@
 
             function showPage(index) {
                 if (index < 0 || index >= pages.length) return;
+
+                if (pages[index].id === 'reflection-summary-page') {
+                    generateReflectionSummary();
+                }
 
                 const currentPage = pages[currentPageIndex];
                 const nextPage = pages[index];
@@ -371,11 +430,46 @@
                     window.scrollTo({ top: 0, behavior: 'instant' });
                 }, 400);
             }
+
+            function generateReflectionSummary() {
+                const container = document.getElementById('reflection-summary-content');
+                let html = '';
+                let hasReflections = false;
+
+                allChapters.forEach((chapter, index) => {
+                    const chapterId = `chapter-${index + 1}`;
+                    const reflections = userReflections[chapterId];
+                    const chapterReflections = Object.values(reflections).filter(val => val && val.trim() !== '');
+
+                    if (chapterReflections.length > 0) {
+                        hasReflections = true;
+                        html += `<div class="mb-6"><h3 class="text-xl font-bold text-stone-800 mb-3">บทเรียนที่ ${index + 1}: ${chapter.title}</h3>`;
+                        chapter.questions.forEach((q, qIndex) => {
+                            const answer = reflections[qIndex] || '';
+                            if (answer.trim() !== '') {
+                                html += `
+                                    <div class="mb-4">
+                                        <p class="font-semibold text-gray-700">${q}</p>
+                                        <p class="pl-4 border-l-2 border-amber-300 mt-1 text-gray-600 whitespace-pre-wrap">${answer}</p>
+                                    </div>
+                                `;
+                            }
+                        });
+                        html += '</div>';
+                    }
+                });
+                
+                if (!hasReflections) {
+                    html = '<p class="text-center text-gray-600">เธอยังไม่ได้บันทึกการเดินทางเลยนะ ลองกลับไปทบทวนใจตัวเองในแต่ละบทเรียนดูสิ :)</p>';
+                }
+
+                container.innerHTML = html;
+            }
             
             pages.forEach((page, index) => {
                 page.classList.add('opacity-0');
-                if (page.id.startsWith('chapter-')) {
-                     const navContainer = document.createElement('div');
+                if (page.id.startsWith('chapter-') || page.id === 'summary-page' || page.id === 'reflection-summary-page') {
+                    const navContainer = document.createElement('div');
                     navContainer.className = 'flex justify-between items-center mt-12 w-full';
 
                     const prevButton = document.createElement('button');
@@ -390,14 +484,24 @@
 
                     const nextButton = document.createElement('button');
                     nextButton.className = 'bg-amber-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-amber-700 nav-button';
-                    nextButton.innerHTML = 'บทถัดไป &rarr;';
+                    
+                    if(page.id === 'summary-page') {
+                        nextButton.innerHTML = 'ดูบันทึกของฉัน &rarr;';
+                    } else if (page.id === 'reflection-summary-page') {
+                        nextButton.innerHTML = 'รับของขวัญพิเศษ &rarr;';
+                    } else {
+                        nextButton.innerHTML = 'บทถัดไป &rarr;';
+                    }
+                    
                     nextButton.onclick = () => showPage(index + 1);
 
                     navContainer.appendChild(prevButton);
                     navContainer.appendChild(homeButton);
                     navContainer.appendChild(nextButton);
 
-                    page.querySelector('.max-w-3xl').appendChild(navContainer);
+                    if (page.querySelector('.max-w-3xl')) {
+                        page.querySelector('.max-w-3xl').appendChild(navContainer);
+                    }
                 }
             });
 
@@ -405,6 +509,14 @@
             document.getElementById('home-link').addEventListener('click', (e) => {
                 e.preventDefault();
                 showPage(0);
+            });
+
+            document.querySelectorAll('textarea').forEach(textarea => {
+                textarea.addEventListener('input', function() {
+                    const chapterId = this.dataset.chapterId;
+                    const questionIndex = this.dataset.questionIndex;
+                    userReflections[chapterId][questionIndex] = this.value;
+                });
             });
 
             pages.forEach((page, i) => {
